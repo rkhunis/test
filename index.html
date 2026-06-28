@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <title>EEG Spectrum Tool Flowchart</title>
 
-<!-- Mermaid CDN -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 
 <style>
@@ -20,25 +19,21 @@
         padding: 25px;
         font-size: 22px;
         font-weight: bold;
-        letter-spacing: 1px;
     }
 
     .container {
         display: flex;
         justify-content: center;
-        align-items: center;
-        padding: 10px 20px 40px 20px;
+        padding: 10px 20px 40px;
     }
 
     .card {
         width: 95%;
         max-width: 1200px;
         background: rgba(255,255,255,0.04);
-        border: 1px solid rgba(255,255,255,0.08);
         border-radius: 16px;
         padding: 20px;
-        box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.08);
     }
 
     .note {
@@ -53,75 +48,76 @@
 <body>
 
 <header>
-    EEG Spectrum Tool — System Flow Architecture
+EEG Spectrum Tool — System Flow Architecture
 </header>
 
 <div class="container">
-    <div class="card">
+<div class="card">
 
-        <div class="mermaid">
+<div class="mermaid">
 flowchart TD
 
-A[EEG Data Acquisition<br/>Brainwave Sensors / Device Input] --> B[Signal Buffering<br/>Stream Stabilization]
+A["EEG Data Acquisition - Brainwave Sensors"] --> B["Signal Buffering - Stream Stabilization"]
 
-B --> C[Preprocessing Stage]
+B --> C["Preprocessing Stage"]
 
-C --> C1[Noise Filtering<br/>• Bandpass Filter<br/>• Notch Filter (50/60Hz)]
-C --> C2[Artifact Removal<br/>• Eye Blinks (EOG)<br/>• Muscle Noise (EMG)]
+C --> C1["Noise Filtering - Bandpass + Notch (50/60Hz)"]
+C --> C2["Artifact Removal - Eye blinks + muscle noise"]
 
 C1 --> D
 C2 --> D
 
-D[Signal Segmentation<br/>Windowing (e.g., 1–2 sec epochs)] --> E[Feature Extraction Layer]
+D["Signal Segmentation - Windowing (1-2 sec epochs)"] --> E["Feature Extraction Layer"]
 
-E --> E1[Time-Domain Features<br/>Mean, Variance, RMS]
-E --> E2[Frequency-Domain Features]
+E --> E1["Time-Domain Features - mean, variance, RMS"]
+E --> E2["Frequency-Domain Features"]
 
-E2 --> F[FFT / Spectral Transform]
+E2 --> F["FFT / Spectral Transform"]
 
-F --> F1[Power Spectral Density (PSD)]
-F --> F2[Brainwave Bands Split<br/>Delta, Theta, Alpha, Beta, Gamma]
+F --> F1["Power Spectral Density (PSD)"]
+F --> F2["Brainwave Bands - Delta Theta Alpha Beta Gamma"]
 
-F1 --> G[Spectrum Visualization Engine]
+F1 --> G["Spectrum Visualization Engine"]
 F2 --> G
 
-G --> H[Interactive UI Layer]
+G --> H["Interactive UI Layer"]
 
-H --> H1[Real-time Graphs<br/>Line / Heatmap / Spectrum Bars]
-H --> H2[User Controls<br/>Filter tuning, time window, scaling]
+H --> H1["Real-time Graphs - line, heatmap, spectrum bars"]
+H --> H2["User Controls - filters, scaling, windowing"]
 
-H --> I[Data Output Layer]
+H --> I["Data Output Layer"]
 
-I --> I1[Logging / Dataset Storage]
-I --> I2[Export Options<br/>CSV / JSON / Analysis Reports]
+I --> I1["Logging / Dataset Storage"]
+I --> I2["Export - CSV / JSON / Reports"]
 
-I --> J[Optional ML Module]
+I --> J["Optional ML Module"]
 
-J --> J1[Pattern Detection<br/>Focus / ADHD indicators]
-J --> J2[Classification Models<br/>EEG State Prediction]
+J --> J1["Pattern Detection - focus / ADHD signals"]
+J --> J2["Classification Models - EEG state prediction"]
 
-J1 --> K[Final Insight Dashboard]
+J1 --> K["Final Insight Dashboard"]
 J2 --> K
 
-K --> L[User Feedback Loop<br/>Adaptive filtering + tuning]
+K --> L["Feedback Loop - adaptive tuning"]
 L --> C
-        </div>
 
-        <div class="note">
-            Designed for presentation • EEG signal processing pipeline (high-level architecture)
-        </div>
+</div>
 
-    </div>
+<div class="note">
+EEG processing pipeline visualization (fixed Mermaid syntax)
+</div>
+
+</div>
 </div>
 
 <script>
-    mermaid.initialize({
-        startOnLoad: true,
-        theme: "dark",
-        flowchart: {
-            curve: "basis"
-        }
-    });
+mermaid.initialize({
+    startOnLoad: true,
+    theme: "dark",
+    flowchart: {
+        curve: "basis"
+    }
+});
 </script>
 
 </body>
